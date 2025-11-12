@@ -1,11 +1,5 @@
 # STRIKE
 
-This is the codebase for the paper "Title".
-
-(Abstract)
-
-See [Bin Duan](https://xx), [Jintao Lin](https://xx), [Guowei Yang](https://xx). "[Title](https://xx)." [Conference Name].
-
 - [Overview](#overview)
     - [Attack Approach](#attack-approach)
     - [Folder Structure](#folder-structure)
@@ -313,4 +307,3 @@ STRUC_BEAM = 3 #4
 STRUC_EARLY_STOP = 3 #5
 IDENT_EARLY_STOP = 2 #6
 ```
-# Acknowledgement
