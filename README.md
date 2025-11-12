@@ -30,6 +30,109 @@ See [Bin Duan](https://xx), [Jintao Lin](https://xx), [Guowei Yang](https://xx).
 - [ITGen](https://github.com/unknownhl/ITGen)
 
 ## Folder Structure
+```
+├── CodeBERT
+│   ├── CloneDetection
+│   │   ├── attack
+│   │   │   ├── ITGenAttacker.py
+│   │   │   ├── attack_alert.py
+│   │   │   ├── attack_beam.py
+│   │   │   ├── attack_coda.py
+│   │   │   ├── attack_itgen.py
+│   │   │   ├── attack_strike.py
+│   │   │   ├── attacker.py
+│   │   │   ├── beamAttacker.py
+│   │   │   ├── codaAttacker.py
+│   │   │   ├── result
+│   │   │   ├── run_alert.py
+│   │   │   ├── run_beam.py
+│   │   │   ├── run_coda.py
+│   │   │   ├── run_itgen.py
+│   │   │   ├── run_strike.py
+│   │   │   └── strikeAttacker.py
+│   │   └── code
+│   │       ├── model.py
+│   │       ├── run.py
+│   │       ├── test.py
+│   │       └── train.py
+│   ├── CodeSummarization
+│   │   ├── attack
+│   │   │   ├── attack_alert.py
+│   │   │   ├── attack_beam.py
+│   │   │   ├── attack_strike.py
+│   │   │   ├── attacker.py
+│   │   │   ├── beamAttacker.py
+│   │   │   ├── result
+│   │   │   ├── run_alert.py
+│   │   │   ├── run_beam.py
+│   │   │   ├── run_strike.py
+│   │   │   └── strikeAttacker.py
+│   │   └── code
+│   │       ├── bleu.py
+│   │       ├── model.py
+│   │       ├── run.py
+│   │       ├── test.py
+│   │       └── train.py
+│   └── VulnerabilityDetection
+│       ├── attack
+│       │   ├── attack_alert.py
+│       │   ├── attack_coda.py
+│       │   ├── attack_strike.py
+│       │   ├── attacker.py
+│       │   ├── codaAttacker.py
+│       │   ├── result
+│       │   ├── run_alert.py
+│       │   ├── run_coda.py
+│       │   ├── run_strike.py
+│       │   └── strikeAttacker.py
+│       └── code
+│           ├── model.py
+│           ├── run.py
+│           ├── test.py
+│           └── train.py
+├── CodeGPT
+├── CodeT5
+├── Dataset
+│   ├── CD
+│   │   └── BCB
+│   │       ├── adv_plus_set
+│   │       │   ├── codebert
+│   │       │   ├── codegpt
+│   │       │   ├── codet5
+│   │       │   ├── get_adv_set.py
+│   │       │   └── get_ori_plus_adv_set.py
+│   │       └── preprocess_idents_CD.py
+│   ├── CS
+│   ├── VD
+│   └── preprocess
+│       ├── backup
+│       │   ├── get_substitutes_baseline.py
+│       │   └── run_baseline_get_subs.py
+│       └── split_testset.py
+│
+├── algorithms
+│
+├── evaluation
+│   ├── eval_by_csv.py
+│   └── eval_csv_place_foder
+│
+├── human_evaluation
+│   ├── README.md
+│   ├── eval.py
+│   ├── requirement.txt
+│   └── selected_samples.json
+│
+├── python_parser
+│   ├── parser_folder
+│   │   ├── tree-sitter-c
+│   │   ├── tree-sitter-java
+│   │   ├── tree-sitter-python
+│   │   ├── utils.py
+│   ├── run_parser.py
+├── strike_parser.py
+└── utils.py
+```
+
 
 ## Dataset and Model
 All datasets and fine-tuned model checkpoints used in our experiments are publicly available at [model bin url](https://xx) to facilitate replication and further research.
