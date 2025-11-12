@@ -226,22 +226,16 @@ class ITGen_Attacker(object):
         return D_0, center_seq, center_ind, LOCAL_OPTIMUM, stage
 
     def update_queue(self, BLOCK_QUEUE, INDEX_DICT):
-        """
-        仅保留仍有可优化索引的块；然后取其中最小的 stage 那一层，按 block_id 排序返回。
-        不新增任何块，让主循环的 stage += 1 自然对齐。
-        """
-        # 先去掉空块 / 不在 INDEX_DICT 的块
+
         q = [(s, b) for (s, b) in BLOCK_QUEUE if INDEX_DICT.get((s, b), [])]
 
-        # 全空就直接返回空队列，主循环会 break
+
         if not q:
             return []
 
-        # 只保留“最小的那一层”
         min_stage = min(s for s, _ in q)
         q = [kb for kb in q if kb[0] == min_stage]
 
-        # 同层内按 block_id 排序，保证处理顺序稳定
         q.sort(key=lambda x: x[1])
         return q
 
