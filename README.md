@@ -98,7 +98,7 @@
 
 
 ## Dataset and Model
-All datasets and fine-tuned model checkpoints used in our experiments are publicly available at [Zenodo](https://xx) to facilitate replication and further research.
+All datasets and fine-tuned model checkpoints used in our experiments are publicly available at [Zenodo](https://doi.org/10.6084/m9.figshare.30597956.v1) to facilitate replication and further research.
 
 # Experiments
 ***We use CodeBERT - Clone Detection as an example to demonstrate how all experiment scripts are executed.***
