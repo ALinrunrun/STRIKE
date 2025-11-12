@@ -84,7 +84,7 @@ def get_code_pairs(file_path,tokenizer, args):
 
 def compute_fitness(chromesome, words_2, codebert_tgt, tokenizer_tgt, orig_prob, orig_label, true_label, code,
                     names_positions_dict, args):
-    # 计算fitness function.
+    # Compute the fitness function.
     # words + chromesome + orig_label + current_prob
     temp_code = map_chromesome(chromesome, code, "java")
     temp_code = ' '.join(temp_code.split())
@@ -98,7 +98,7 @@ def compute_fitness(chromesome, words_2, codebert_tgt, tokenizer_tgt, orig_prob,
 
     new_dataset = CodeDataset([new_feature])
     new_logits, preds = codebert_tgt.get_results(new_dataset, args.eval_batch_size)
-    # 计算fitness function
+    # Compute the fitness function
     fitness_value = orig_prob - new_logits[0][orig_label]
     return fitness_value, preds[0]
 
@@ -106,18 +106,18 @@ def get_importance_score(args, example, code, code_2, words_list: list, variable
                          tgt_model, tokenizer, label_list, batch_size=16, max_length=512, model_type='classification'):
     '''Compute the importance score of each variable'''
     # label: example[1] tensor(1)
-    # 1. 过滤掉所有的keywords.
+    # 1. Filter out all keywords.
     positions = get_identifier_posistions_from_code(words_list, variable_names)
-    # 需要注意大小写.
+    # Case sensitivity should be considered.
     if len(positions) == 0:
-        ## 没有提取出可以mutate的position
+        ## No mutable positions were extracted
         return None, None, None
 
     new_example = []
 
-    # 2. 得到Masked_tokens
+    # 2. Get masked tokens
     masked_token_list, replace_token_positions = get_masked_code_by_position(words_list, positions)
-    # replace_token_positions 表示着，哪一个位置的token被替换了.
+    # replace_token_positions indicates which token positions have been replaced..
 
     code2_tokens, _, _ = _tokenize(code_2, tokenizer)
 
@@ -127,14 +127,14 @@ def get_importance_score(args, example, code, code_2, words_list: list, variable
         new_example.append(new_feature)
 
     new_dataset = CodeDataset(new_example)
-    # 3. 将他们转化成features
+    # 3. Convert them into features
     logits, preds = tgt_model.get_results(new_dataset, args.eval_batch_size)
     orig_probs = logits[0]
     orig_label = preds[0]
-    # 第一个是original code的数据.
+    # The first one is the data of the original code.
 
     orig_prob = max(orig_probs)
-    # predicted label对应的probability
+    # Probability of the predicted label
 
     importance_score = []
     for prob in logits[1:]:
@@ -204,7 +204,7 @@ class ALERT_Attacker():
         code_1 = code[2]
         code_2 = code[3]
 
-        # 先得到tgt_model针对原始Example的预测信息.
+        # First, get the tgt_model’s prediction on the original example.
 
         logits, preds = self.model_tgt.get_results([example], self.args.eval_batch_size)
         orig_prob = logits[0]
@@ -278,7 +278,7 @@ class ALERT_Attacker():
                     # 并没有生成新的mutants，直接跳去下一个token
                     continue
                 new_dataset = CodeDataset(replace_examples)
-                # 3. 将他们转化成features
+                # 3. Convert them into features
                 logits, preds = self.model_tgt.get_results(new_dataset, self.args.eval_batch_size)
 
                 _the_best_candidate = -1
@@ -384,7 +384,7 @@ class ALERT_Attacker():
             number of changed positions: nb_changed_pos
             substitues for variables: replaced_words
         '''
-        # 先得到tgt_model针对原始Example的预测信息.
+        # First, get the tgt_model’s prediction on the original example.
 
         code_1 = code[2]
         code_2 = code[3]
@@ -488,7 +488,7 @@ class ALERT_Attacker():
                 # 并没有生成新的mutants，直接跳去下一个token
                 continue
             new_dataset = CodeDataset(replace_examples)
-            # 3. 将他们转化成features
+            # 3. Convert them into features
             logits, preds = self.model_tgt.get_results(new_dataset, self.args.eval_batch_size)
             assert (len(logits) == len(substitute_list))
 

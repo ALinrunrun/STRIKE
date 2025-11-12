@@ -126,13 +126,13 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     args.device = device
 
-    # 加载模型到正确的设备
+    # Load the model onto the correct device
     state_dict = torch.load(output_dir, map_location=device)
     model.load_state_dict(state_dict, strict=False)
     model.to(device)
     logger.info("reload model from {}".format(output_dir))
-    print("是否可用 CUDA:", torch.cuda.is_available())
-    print("当前模型所在设备:", next(model.parameters()).device)
+    print("Is CUDA available:", torch.cuda.is_available())
+    print("Current device of the model:", next(model.parameters()).device)
 
 
     ## Load CodeBERT (MLM) model

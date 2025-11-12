@@ -98,7 +98,7 @@ class ALERT_Attacker():
         self.query = 0
 
     def compute_fitness(self, idx, nl, chromesome, orig_prob, code):
-        # 计算fitness function.
+        # Compute the fitness function.
         # words + chromesome + orig_label + current_prob
         temp_code = map_chromesome(chromesome, code, "java")
         new_example = get_new_example(idx, temp_code, nl)
@@ -110,18 +110,18 @@ class ALERT_Attacker():
     def get_importance_score(self, idx, nl, code, current_prob, words_list: list, variable_names: list):
         '''Compute the importance score of each variable'''
         # label: example[1] tensor(1)
-        # 1. 过滤掉所有的keywords.
+        # 1. Filter out all keywords.
         positions = get_identifier_posistions_from_code(words_list, variable_names)
-        # 需要注意大小写.
+        # Case sensitivity should be considered.
         if len(positions) == 0:
-            ## 没有提取出可以mutate的position
+            ## No mutable positions were extracted
             return None, None, None
 
         new_bleus = []
 
-        # 2. 得到Masked_tokens
+        # 2. Get masked tokens
         masked_token_list, replace_token_positions = get_masked_code_by_position(words_list, positions)
-        # replace_token_positions 表示着，哪一个位置的token被替换了.
+        # replace_token_positions indicates which token positions have been replaced..
 
         for index, tokens in enumerate([words_list] + masked_token_list):
             new_code = ' '.join(tokens)

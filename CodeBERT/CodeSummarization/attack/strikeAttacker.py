@@ -38,7 +38,7 @@ if ADOPT_GPT5:
     from gpt5_client import GPT5Client
     gpt5 = GPT5Client(max_workers=20)
 
-# ========== 全局参数设置 ==========
+# ========== Global parameter settings ==========
 STATEMENT_LLM_ITER_CONSTRUCTION = 10
 STATEMENT_CANS_NUM = 5
 WORD_LLM_ITER_CONSTRUCTION = 5  # make sure enough, prevent no candicates
@@ -94,24 +94,22 @@ class Strike_Attacker(object):
         self.substitutions = generated_substitutions
 
     def cosine_similarity(self, code_1: str, code_2: str):
-        # 编码并截断
+
         code1_ids = self.tokenizer_mlm.encode(code_1, truncation=True, max_length=self.args.block_size)
         code2_ids = self.tokenizer_mlm.encode(code_2, truncation=True, max_length=self.args.block_size)
 
-        # 转 tensor
         code1_tensor = torch.tensor(code1_ids, dtype=torch.long, device=self.args.device).unsqueeze(0)
         code2_tensor = torch.tensor(code2_ids, dtype=torch.long, device=self.args.device).unsqueeze(0)
 
-        # 前向传播，得到隐藏层输出 (batch_size, seq_len, hidden_size)
         with torch.no_grad():
             emb1 = self.model_mlm(code1_tensor)[0]
             emb2 = self.model_mlm(code2_tensor)[0]
 
-        # 使用 mean pooling （平均所有 token embedding）
+        # Use mean pooling (average all token embeddings)
         emb1 = emb1.mean(dim=1)   # -> [1, hidden_size]
         emb2 = emb2.mean(dim=1)
 
-        # 计算余弦相似度
+        # Compute cosine similarity
         sim = torch.cosine_similarity(emb1, emb2).item()
 
         return sim
@@ -364,7 +362,7 @@ class Strike_Attacker(object):
                 if miss_rounds >= 2:
                     beam_width = max(1, beam_width - 1)
 
-            # --- 更新 beam ---
+            # --- Update the beam ---
             beam = sorted(new_candidates, key=lambda x: x[0])[:beam_width]
 
         return {
