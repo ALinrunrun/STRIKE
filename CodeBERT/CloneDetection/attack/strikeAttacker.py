@@ -35,8 +35,7 @@ NUMBER_2 = 32 #2
 
 STRUC_BEAM = 3 #4
 STRUC_EARLY_STOP = 3 #5
-IDENT_THRESHOLD = 0.01 #6
-IDENT_EARLY_STOP = 2 #7
+IDENT_EARLY_STOP = 2 #6
 
 print("===== Hyperparameters =====")
 print(f"STATEMENT_LLM_ITER_CONSTRUCTION : {STATEMENT_LLM_ITER_CONSTRUCTION}") #1
@@ -47,8 +46,7 @@ print(f"NUMBER_2                        : {NUMBER_2}") #2
 print("============================")
 print(f"Beam                            : {STRUC_BEAM}") #4
 print(f"struct_early_stop               : {STRUC_EARLY_STOP}") #5
-print(f"idents_threshold                : {IDENT_THRESHOLD}") #6
-print(f"idents_early_stop               : {IDENT_EARLY_STOP}") #7
+print(f"idents_early_stop               : {IDENT_EARLY_STOP}") #6
 print("============================")
 
 LEVEL_1 = [
@@ -663,7 +661,7 @@ class Strike_Attacker(object):
                     
                     if unconfir_snippets <= early_trigger:
                         cur_drop = last_prob - cur_prob
-                        if cur_drop < last_prob * IDENT_THRESHOLD:
+                        if cur_drop < last_prob * 0.01:
                             break
                         
                 if not final_res["success"]:
