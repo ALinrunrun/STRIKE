@@ -102,7 +102,7 @@ See [Bin Duan](https://xx), [Jintao Lin](https://xx), [Guowei Yang](https://xx).
 
 
 ## Dataset and Model
-All datasets and fine-tuned model checkpoints used in our experiments are publicly available at [model bin url](https://xx) to facilitate replication and further research.
+All datasets and fine-tuned model checkpoints used in our experiments are publicly available at [Zenodo](https://xx) to facilitate replication and further research.
 
 # Experiments
 ***We use CodeBERT - Clone Detection as an example to demonstrate how all experiment scripts are executed.***
