@@ -54,7 +54,12 @@ Step 4 — Rate all samples
 ## 5. Output Format
 All results are saved in JSON:
 
+## 5. Summarize the evaluation results
+```
+python summarize_eval_res.py
+```
 # End of Guide — Thank you for participating!
+
 
 
 
