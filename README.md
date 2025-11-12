@@ -57,39 +57,10 @@ See [Bin Duan](https://xx), [Jintao Lin](https://xx), [Guowei Yang](https://xx).
 │   │       └── train.py
 │   ├── CodeSummarization
 │   │   ├── attack
-│   │   │   ├── attack_alert.py
-│   │   │   ├── attack_beam.py
-│   │   │   ├── attack_strike.py
-│   │   │   ├── attacker.py
-│   │   │   ├── beamAttacker.py
-│   │   │   ├── result
-│   │   │   ├── run_alert.py
-│   │   │   ├── run_beam.py
-│   │   │   ├── run_strike.py
-│   │   │   └── strikeAttacker.py
 │   │   └── code
-│   │       ├── bleu.py
-│   │       ├── model.py
-│   │       ├── run.py
-│   │       ├── test.py
-│   │       └── train.py
 │   └── VulnerabilityDetection
 │       ├── attack
-│       │   ├── attack_alert.py
-│       │   ├── attack_coda.py
-│       │   ├── attack_strike.py
-│       │   ├── attacker.py
-│       │   ├── codaAttacker.py
-│       │   ├── result
-│       │   ├── run_alert.py
-│       │   ├── run_coda.py
-│       │   ├── run_strike.py
-│       │   └── strikeAttacker.py
 │       └── code
-│           ├── model.py
-│           ├── run.py
-│           ├── test.py
-│           └── train.py
 ├── CodeGPT
 ├── CodeT5
 ├── Dataset
@@ -109,19 +80,15 @@ See [Bin Duan](https://xx), [Jintao Lin](https://xx), [Guowei Yang](https://xx).
 │       │   ├── get_substitutes_baseline.py
 │       │   └── run_baseline_get_subs.py
 │       └── split_testset.py
-│
 ├── algorithms
-│
 ├── evaluation
 │   ├── eval_by_csv.py
 │   └── eval_csv_place_foder
-│
 ├── human_evaluation
 │   ├── README.md
 │   ├── eval.py
 │   ├── requirement.txt
 │   └── selected_samples.json
-│
 ├── python_parser
 │   ├── parser_folder
 │   │   ├── tree-sitter-c
