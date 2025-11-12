@@ -17,7 +17,6 @@
     - [Human Evaluation](#human-evaluation)
     - [Ablation Study](#ablation-study)
     - [Hyperparameter Sensitivity Analysis](#hyperparameter-sensitivity-analysis)
-- [Acknowledgement](#acknowledgement)
 
 # Overview
 ## Attack Approach
