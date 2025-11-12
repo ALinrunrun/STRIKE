@@ -31,6 +31,8 @@ See [Bin Duan](https://xx), [Jintao Lin](https://xx), [Guowei Yang](https://xx).
 
 ## Folder Structure
 
+## Dataset and Model
+All datasets and fine-tuned model checkpoints used in our experiments are publicly available at [model bin url](https://xx) to facilitate replication and further research.
 
 # Experiments
 ***We use CodeBERT - Clone Detection as an example to demonstrate how all experiment scripts are executed.***
@@ -43,7 +45,7 @@ pip install -r requirements.txt
 
 ## Model Fine-tuning and Evaluation
 We fine-tune the pre-trained model on the dataset of the target task to achieve better performance, and save the resulting checkpoint at `./saved_models/checkpoint-best-f1/model.bin`.
-This produces the CodeBERT model fine-tuned for the Clone Detection task, and all model files can be downloaded from the provided[model bin url](https://xx).
+This produces the CodeBERT model fine-tuned for the Clone Detection task.
 
 ### Fine-tuning
 
