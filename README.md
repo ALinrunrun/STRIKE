@@ -26,6 +26,10 @@
 
 ## Folder Structure
 ```
+├── README.md
+├── strike_parser.py
+├── gpt5_client.py
+├── utils.py
 ├── CodeBERT
 │   ├── CloneDetection
 │   │   ├── attack
@@ -91,8 +95,7 @@
 │   │   ├── tree-sitter-python
 │   │   ├── utils.py
 │   ├── run_parser.py
-├── strike_parser.py
-└── utils.py
+└── END
 ```
 
 
