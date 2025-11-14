@@ -1,3 +1,5 @@
+# These are several parsing routines and utility methods used by STRIKE, which we consolidate here for global access.
+
 import sys
 
 sys.path.append("../../../code_parser/python_parser")
