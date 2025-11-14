@@ -13,15 +13,15 @@ This tool provides a graphical user interface (GUI) for human evaluation of pair
   - 🟩 *Green lines* — Added or changed code  
   - 🟥 *Red lines* — Deleted code  
 
-You will rate each code pair based on two criteria: **Naturalness** and **Semantic Preservation**.
+You will rate each code pair based on two criteria: **Naturalness** and **Semantic Similarity**.
 
 ## 2. Evaluation Criteria
 
-**(1) Naturalness**  
-Evaluate whether the modifications appear human-written and contextually coherent.
+**(1) Contextual Naturalness**  
+Evaluates whether perturbations remain developer-like and contextually consistent, capturing the repetitive and predictable patterns characteristic of natural code.
 
-**(2) Semantic Preservation**  
-Evaluate hether the modified code still expresses the same functionality as the original.
+**(2) Semantic Similarity**  
+Evaluates whether the sample still preserves the original semantics.
 
 ## 3. Rating Scale (1–5 Likert)
 
@@ -61,6 +61,7 @@ All results are saved in JSON:
 python summarize_eval_res.py
 ```
 # End of Guide — Thank you for participating!
+
 
 
 
