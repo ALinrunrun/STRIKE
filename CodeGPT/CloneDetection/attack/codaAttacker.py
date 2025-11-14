@@ -6,7 +6,7 @@ import copy
 import numpy as np
 from utils import CodeDataset, _tokenize
 from run import InputFeatures, convert_examples_to_features
-from run_parser import get_identifiers_coda, get_example, get_example_batch, get_code_style, change_code_style
+from run_parser import get_split_identifiers, get_example, get_example_batch, get_code_style, change_code_style
 from scipy.spatial.distance import cosine as cosine_distance
 
 def get_embeddings(code, variables, tokenizer_mlm, codebert_mlm):
@@ -15,7 +15,7 @@ def get_embeddings(code, variables, tokenizer_mlm, codebert_mlm):
     for i in variables:
         chromesome[i] = '<unk>'
     new_code = get_example_batch(new_code, chromesome, "java")
-    _, _, code_tokens = get_identifiers_coda(new_code, "java")
+    _, _, code_tokens = get_split_identifiers(new_code, "java")
     processed_code = " ".join(code_tokens)
     words, sub_words, keys = _tokenize(processed_code, tokenizer_mlm)
     sub_words = [tokenizer_mlm.cls_token] + sub_words[:512 - 2] + [tokenizer_mlm.sep_token]
@@ -50,8 +50,8 @@ class Coda_Attacker():
         # print(np.argmax(orig_prob))
         true_label = example[1].item()
 
-        variable_names1, function_names1, _ = get_identifiers_coda(code1, "java")
-        variable_names2, function_names2, _ = get_identifiers_coda(code2, "java")
+        variable_names1, function_names1, _ = get_split_identifiers(code1, "java")
+        variable_names2, function_names2, _ = get_split_identifiers(code2, "java")
 
         if (not orig_label == true_label) or len(variable_names1) == 0:
             return -2, None, None
