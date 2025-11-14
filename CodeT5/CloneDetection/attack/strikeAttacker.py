@@ -16,7 +16,7 @@ from strike_parser import (
     merge_code,
 )
 from utils import CodeDataset, _tokenize
-from run_parser import get_identifiers_coda, get_example_batch
+from run_parser import get_split_identifiers, get_example_batch
 from scipy.spatial.distance import cosine as cosine_distance
 ADOPT_GPT5 = True
 if ADOPT_GPT5:
@@ -88,7 +88,7 @@ def get_embeddings(code, variables, tokenizer_mlm, codebert_mlm):
     for i in variables:
         chromesome[i] = '<unk>'
     new_code = get_example_batch(new_code, chromesome, "java")
-    _, _, code_tokens = get_identifiers_coda(new_code, "java")
+    _, _, code_tokens = get_split_identifiers(new_code, "java")
     processed_code = " ".join(code_tokens)
     words, sub_words, keys = _tokenize(processed_code, tokenizer_mlm)
     sub_words = [tokenizer_mlm.cls_token] + sub_words[:512 - 2] + [tokenizer_mlm.sep_token]
@@ -509,7 +509,7 @@ class Strike_Attacker(object):
             elif level_of_prompt == 3:
                 last_prob = cur_prob
 
-                variable_names1, function_names1, _ = get_identifiers_coda(code_1, "java")
+                variable_names1, function_names1, _ = get_split_identifiers(code_1, "java")
                 
                 random_subs = []
                 for i in np.random.choice(self.substitutions[str(topn_label)], size=len(self.substitutions[str(topn_label)]), replace=False):
