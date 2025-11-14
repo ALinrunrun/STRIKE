@@ -8,12 +8,12 @@
 # beam                      x.xx              x.xx        x.xx
 # coda                      x.xx              x.xx        x.xx
 # itgen                     x.xx              x.xx        x.xx
-# splice                    x.xx              x.xx        x.xx
+# strike                    x.xx              x.xx        x.xx
 
 import json
 from collections import defaultdict
 
-target_file = "answer.json"
+target_file = "jintao2_results.json"
 
 with open(target_file, "r", encoding="utf-8") as f:
     data = json.load(f)
@@ -30,7 +30,7 @@ print(target_file)
 print(f"{'Method':<12}{'avg_naturalness':>18}{'avg_semantic':>18}{'avg_all':>12}")
 print("-" * 60)
 
-for method, vals in stats.items():
+for method, vals in sorted(stats.items()):
     avg_nat = sum(vals["naturalness"]) / len(vals["naturalness"])
     avg_sem = sum(vals["semantic"]) / len(vals["semantic"])
     avg_all = (avg_nat + avg_sem) / 2
