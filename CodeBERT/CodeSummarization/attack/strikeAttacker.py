@@ -31,7 +31,7 @@ from strike_parser import (
 )
 from utils import set_seed
 from utils import CodeDataset, _tokenize
-from run_parser import get_identifiers_coda, get_example_batch, get_identifiers
+from run_parser import get_split_identifiers, get_example_batch, get_identifiers
 from scipy.spatial.distance import cosine as cosine_distance
 ADOPT_GPT5 = False
 if ADOPT_GPT5:
@@ -68,7 +68,7 @@ def get_embeddings(code, variables, tokenizer_mlm, codebert_mlm):
     for i in variables:
         chromesome[i] = '<unk>'
     new_code = get_example_batch(new_code, chromesome, "java")
-    _, _, code_tokens = get_identifiers_coda(new_code, "java")
+    _, _, code_tokens = get_split_identifiers(new_code, "java")
     # _, code_tokens = get_identifiers(new_code, "java")
     processed_code = " ".join(code_tokens)
     words, sub_words, keys = _tokenize(processed_code, tokenizer_mlm)
@@ -501,14 +501,7 @@ class Strike_Attacker(object):
                 # set_seed(123)
                 last_prob = cur_prob
 
-                variable_names1, function_names1, _ = get_identifiers_coda(code, "java")
-                # identifiers, _ = get_identifiers(code, "java")
-                # variable_names1 = []
-                # for name in identifiers:
-                #     if ' ' in name[0].strip():
-                #         continue
-                #     variable_names1.append(name[0])
-                # function_names1 = []
+                variable_names1, function_names1, _ = get_split_identifiers(code, "java")
                 
                 random_subs = []
                 for i in np.random.choice(self.substitutions[str(FIXED_LABEL)], size=len(self.substitutions[str(FIXED_LABEL)]), replace=False):

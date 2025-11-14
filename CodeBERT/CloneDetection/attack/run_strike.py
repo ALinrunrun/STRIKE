@@ -6,7 +6,7 @@ os.system("CUDA_VISIBLE_DEVICES=1 python attack_strike.py \
     --model_type=roberta \
     --tokenizer_name=microsoft/codebert-base \
     --model_name_or_path=microsoft/codebert-base \
-    --csv_store_path result/attack_strike_hy5_3.csv \
+    --csv_store_path result/attack_strike_all.csv \
     --base_model=microsoft/codebert-base-mlm \
     --eval_data_file=../../../Dataset/CD/BCB/test_sampled.txt \
     --block_size 512 \
