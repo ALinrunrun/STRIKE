@@ -1,5 +1,7 @@
 # Human Evaluation - README
 
+***Note: Due to CSV file writing, `\n` may be stored as `real line breaks`, causing some adversarial samples to display incorrectly. Please `ignore` this during evaluation.***
+
 ## 1. Overview
 
 This tool provides a graphical user interface (GUI) for human evaluation of paired code samples.
@@ -59,6 +61,7 @@ All results are saved in JSON:
 python summarize_eval_res.py
 ```
 # End of Guide — Thank you for participating!
+
 
 
 
