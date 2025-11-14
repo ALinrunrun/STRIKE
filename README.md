@@ -14,6 +14,7 @@
     - [Robustness Enhancement Experiment](#robustness-enhancement-experiment)
     - [Human Evaluation](#human-evaluation)
     - [Ablation Study](#ablation-study)
+    - [LLM Replacement Validation](#llm-replacement-validation)
     - [Hyperparameter Sensitivity Analysis](#hyperparameter-sensitivity-analysis)
 
 # Overview
