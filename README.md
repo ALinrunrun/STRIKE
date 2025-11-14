@@ -287,6 +287,13 @@ Example:
 --levels=134
 ```
 
+## LLM Replacement Validation
+
+We designed dedicated modules for the LLM substitution verification experiment across each model and task. You may configure the experiment by modifying the model loader in `gpt5_client.py` and switching the global flag `ADOPT_GPT5` in `strikeAttacker.py` from `FALSE` to `TRUE`.
+```
+ADOPT_GPT5 = TRUE
+```
+
 ## Hyperparameter Sensitivity Analysis
 
 For the hyperparameter sensitivity analysis, we continued to use a convenient parameter-modification approach for testing. Still using CodeBERT-Clone Detection (CD) as an example, we opened the `strikeAttacker.py` script. In the global parameter section, the following configuration can be found:
