@@ -27,6 +27,7 @@
 ## Folder Structure
 ```
 ├── README.md
+├── requirement.txt
 ├── strike_parser.py
 ├── gpt5_client.py
 ├── utils.py
