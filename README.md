@@ -323,6 +323,6 @@ STRUC_EARLY_STOP = 3 #5
 IDENT_EARLY_STOP = 2 #6
 ```
 
-## Example of Adversarial Code
+## Example of Adversarial Code Generation Pipeline
 
 ![Example](LLM4DCM.png)
