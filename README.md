@@ -323,6 +323,31 @@ STRUC_EARLY_STOP = 3 #5
 IDENT_EARLY_STOP = 2 #6
 ```
 
+## Extension to Python
+
+To further examine the generality of **STRIKE**, we extended the evaluation to a Python dataset using the **Google Code Jam** benchmark on the **Authorship Attribution** task.  
+As shown below, STRIKE consistently outperforms existing black-box attacks (**CODA** and **ALERT**) across all models, achieving significantly higher **Attack Success Rate (ASR)** while maintaining high **semantic similarity (ACS)** and competitive **query/runtime efficiency (AMQ / ART)**.
+
+> Note: These results are not included in the paper due to space limitations.
+
+### Results
+
+| Model | STRIKE-ASR ↑ | STRIKE-AMQ ↓ | STRIKE-ART ↓ | STRIKE-ACS ↑ | CODA-ASR ↑ | CODA-AMQ ↓ | CODA-ART ↓ | CODA-ACS ↑ | ALERT-ASR ↑ | ALERT-AMQ ↓ | ALERT-ART ↓ | ALERT-ACS ↑ |
+|------|--------------|--------------|--------------|--------------|-----------|-----------|-----------|-----------|------------|------------|------------|------------|
+| CodeBERT | **95.41%** | 1025.16 | 0.23 | **98.61%** | 89.13% | **963.02** | **0.21** | 88.66% | 55.96% | 2094.91 | 0.41 | 98.15% |
+| CodeT5 | **92.11%** | 1117.44 | 0.31 | **98.66%** | 79.61% | **1002.06** | **0.27** | 90.18% | 75.44% | 1244.89 | 0.40 | **98.90%** |
+| CodeGPT | **91.59%** | 1197.61 | 0.32 | **98.60%** | 45.79% | **1372.79** | **0.39** | 87.74% | 34.58% | 3105.96 | 0.60 | 97.48% |
+
+**Metrics**
+
+- **ASR**: Attack Success Rate  
+- **AMQ**: Average Model Queries  
+- **ART**: Average Running Time  
+- **ACS**: Average Code Similarity
+
+
 ## Example of Adversarial Code Generation Pipeline
 
 ![Example](LLM4DCM.png)
+
+
