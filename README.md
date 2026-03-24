@@ -1,7 +1,6 @@
 # STRIKE
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16910387.svg)](https://doi.org/10.5281/zenodo.16910387)
-[![GitHub release](https://img.shields.io/github/v/release/beanduan22/Xamt)](https://github.com/beanduan22/Xamt/releases)
 
 
 - [Overview](#overview)
