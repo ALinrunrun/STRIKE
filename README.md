@@ -257,6 +257,8 @@ python eval_by_csv.py <Limit>
 where {Limit} specifies the maximum index to read (e.g., 1000 means reading all entries with Index < 1000).
 
 ## Robustness Enhancement Experiment
+***We use STRIKE fine-tuning as an example to demonstrate how to run the experimental scripts and evaluate robustness under different methods.***
+
 We prepare a subset S covering indices 0–999 for robustness verification, and split it into S1 (indices 0–499) and S2 (indices 500–999). You can use the split tool `split_testset.py` to extract these subsets.
 
 ```
