@@ -22,17 +22,15 @@ def get_adv_set(csv_path, model_name):
 
     output_dir = os.path.dirname(csv_path)
     base_name = os.path.splitext(os.path.basename(csv_path))[0]
-    adv_set_output_file = os.path.join(output_dir, f"adv_by_{base_name}.jsonl")
+    adv_set_output_file = os.path.join(output_dir, f"test_data_{model_name}_{base_name}.jsonl")
 
 
     df = pd.read_csv(csv_path)
 
     df = df[["Index", "Original Code", "Adversarial Code", "Type"]]
 
-    if "strike" in csv_path.lower():
-        df = df[(df["Index"] >= 500) & (df["Index"] < 1000)]
-    else:
-        df = df[df["Index"] < 1000]
+    df = df[(df["Index"] >= 500) & (df["Index"] < 1000)]
+    # df = df[df["Index"] < 1000]
 
     success_rows = df["Original Code"].notna() & (df["Original Code"].str.strip() != "")
     success_count = success_rows.sum()
@@ -41,7 +39,7 @@ def get_adv_set(csv_path, model_name):
     new_entries = []
     for Index, adv in zip(df.loc[success_rows, "Index"], df.loc[success_rows, "Adversarial Code"]):   
         new_entry = {
-            "project": "Strike",
+            "project": base_name,
             "commit_id": "adv",
             "target": index_to_target[Index],
             "func": adv,
