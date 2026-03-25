@@ -89,7 +89,9 @@ def read_examples(filename):
             line = line.strip()
             js = json.loads(line)
             if 'idx' not in js:
-                js['idx'] = idx
+                js['idx']=idx
+            # else:
+            #     idx = js['idx']
             code = ' '.join(js['code_tokens']).replace('\n', ' ')
             code = ' '.join(code.strip().split())
             nl = ' '.join(js['docstring_tokens']).replace('\n', '')
@@ -103,6 +105,31 @@ def read_examples(filename):
             )
             # if len(examples) > 1000: break
     return examples
+
+# def read_examples(filename):
+#     """Read examples from filename."""
+#     examples=[]
+#     with open(filename,encoding="utf-8") as f:
+#         for idx, line in enumerate(f):
+#             line=line.strip()
+#             js=json.loads(line)
+#             if 'idx' not in js:
+#                 js['idx']=idx
+#             else:
+#                 idx = js['idx']
+#             code = js['code'].replace('\n', ' ')
+#             code = ' '.join(code.strip().split())
+#             nl=js['docstring'].replace('\n','')
+#             nl=' '.join(nl.strip().split())            
+#             examples.append(
+#                 Example(
+#                         idx = idx,
+#                         source=code,
+#                         target = nl,
+#                         ) 
+#             )
+#             # if len(examples) > 1000: break
+#     return examples
 
 
 class InputFeatures(object):
@@ -143,6 +170,10 @@ def convert_examples_to_features(examples, tokenizer, args, stage=None):
         else:
             inputs = code + [tokenizer.bos_token_id]
             labels = [1] * len(code) + [2]
+
+            # pad_len = block_size - len(inputs)
+            # inputs += [tokenizer.pad_token_id] * pad_len
+            # labels += [0] * pad_len
         
         if example_index < 5:
             if stage=='train':
@@ -197,7 +228,7 @@ def eval_bleu(args, dev_dataset, model, device, tokenizer):
         dev_dataset['dev_bleu']=eval_examples,eval_data
 
     eval_sampler = SequentialSampler(eval_data)
-    eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=args.eval_batch_size)
+    eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=1)
 
     model.eval() 
     p=[]
