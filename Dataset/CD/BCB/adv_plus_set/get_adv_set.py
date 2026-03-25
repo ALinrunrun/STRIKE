@@ -17,10 +17,10 @@ def get_adv_set(csv_path, model_name):
 
     output_dir = os.path.dirname(csv_path)
     base_name = os.path.splitext(os.path.basename(csv_path))[0]
-    adv_set_output_file = os.path.join(output_dir, f"adv_by_{base_name}.txt")
+    adv_set_output_file = os.path.join(output_dir, f"test_sampled_{model_name}_{base_name}.txt")
 
     base_data_file = "../data.jsonl"
-    adv_data = os.path.join(output_dir, f"data_{model_name}_{base_name}.jsonl")
+    adv_data = os.path.join(output_dir, f"test_data_{model_name}_{base_name}.jsonl")
     
     if os.path.exists(adv_data):
         os.remove(adv_data)
@@ -33,10 +33,8 @@ def get_adv_set(csv_path, model_name):
 
     df = df[["Index", "Original Code", "Adversarial Code", "Type"]]
 
-    if "strike" in csv_path.lower():
-        df = df[(df["Index"] >= 500) & (df["Index"] < 1000)]
-    else:
-        df = df[df["Index"] < 1000]
+    df = df[(df["Index"] >= 500) & (df["Index"] < 1000)]
+    # df = df[df["Index"] < 1000]
 
     success_rows = df["Original Code"].notna() & (df["Original Code"].str.strip() != "")
     success_count = success_rows.sum()
@@ -65,7 +63,5 @@ for folder in folders:
     for csv_file in csv_files:
         csv_path = os.path.join(folder, csv_file)
         print(f"csv_path: {csv_path}")
-        try:
-            get_adv_set(csv_path, folder)
-        except Exception as e:
-            print(f"[error] failed on {csv_path}")
+
+        get_adv_set(csv_path, folder)
