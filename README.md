@@ -1,6 +1,6 @@
 # STRIKE
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16910387.svg)](https://doi.org/10.5281/zenodo.16910387)
+DOI https://doi.org/10.5281/zenodo.16910387
 
 
 - [Overview](#overview)
