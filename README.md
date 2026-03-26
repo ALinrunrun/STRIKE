@@ -1,6 +1,6 @@
 # STRIKE
 
-DOI https://doi.org/10.5281/zenodo.16910387
+DOI:
 
 
 - [Overview](#overview)
