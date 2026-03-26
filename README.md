@@ -1,6 +1,6 @@
 # STRIKE
 
-[DOI](https://doi.org/10.5281/zenodo.19229630)
+DOI: https://doi.org/10.5281/zenodo.19229630
 
 - [Overview](#overview)
     - [Attack Approach](#attack-approach)
